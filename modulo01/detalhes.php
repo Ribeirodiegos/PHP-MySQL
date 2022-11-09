@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <title>Detalhes do jogo</title>
 </head>
 <body>
@@ -40,7 +42,7 @@
         }
       ?>
     </table>
-    <a href="index.php"><img src="icones/icoback.png" alt=""></a>
+    <?php echo voltar() ?>
   </div>
   <?php include_once "rodape.php"; ?>
 
