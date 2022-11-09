@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/estilo.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
   <title>Listagem de jogos</title>
@@ -23,7 +23,7 @@
   <?php include_once "topo.php"; ?>
 
     <h1>Escolha seu jogo</h1>
-    <?php echo msg_sucesso('Arquivo aberto com sucesso.')?>
+
     <form action="index.php" method="get" id="busca">
       Ordenar:
       <a href="index.php?o=n&c=<?php echo $chave;?>">Nome</a> |
