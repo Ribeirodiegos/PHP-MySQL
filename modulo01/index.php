@@ -68,19 +68,27 @@
           if(!$busca) {//VERIFICANDO SE A BUSCA OCORREU
             echo "<tr><td>Infelizmente a busca deu errado";
           } else {//VERIFICANDO SE O NUMERO DE LINHAS PESQUISADAS FOI 0
-            if ($busca->num_rows == 0) {
-              echo "Nenhum registro foi encontrado.";
-            } else {//LOOPING MOSTRANDO OS REGISTROS PESQUISADOS UM A UM NA TABELA, ENQUANTO FOR POSSIVEL.
-              while ($reg=$busca->fetch_object()) {
-                $t = thumb($reg->capa);
-                echo "<tr><td><img src='$t' class='mini'/>";
-                echo "<td><a href='detalhes.php?cod=$reg->cod'>$reg->nome</a>";
-                echo " [$reg->genero]";
-                echo "<br>$reg->produtora";
-                echo "<td>Adm";
+              if ($busca->num_rows == 0) {
+                echo "Nenhum registro foi encontrado.";
+                } else {//LOOPING MOSTRANDO OS REGISTROS PESQUISADOS UM A UM NA TABELA, ENQUANTO FOR POSSIVEL.
+                  while ($reg=$busca->fetch_object()) {
+                    $t = thumb($reg->capa);
+                    echo "<tr><td><img src='$t' class='mini'/>";
+                    echo "<td><a href='detalhes.php?cod=$reg->cod'>$reg->nome</a>";
+                    echo "<br>($reg->genero) $reg->produtora";
+                    if (is_admin()) {
+                        echo "<td> <i class='material-icons'>add_circle</i> ";
+                        echo "<i class='material-icons'>edit</i> ";
+                        echo "<i class='material-icons'>delete</i>";
+
+                    } elseif (is_editor()) {
+                      echo "<td>";
+                      echo "<i class='material-icons'>edit</i> ";
+                    }
+                  }
             }
           }
-        }
+        
         ?>
     </table>
   </div>
