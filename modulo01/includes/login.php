@@ -1,6 +1,25 @@
 <?php
+  session_start();
+  
+
+  if (!isset($_SESSION['user'])) {
+    $_SESSION['user'] = "";
+    $_SESSION['nome'] = "";
+    $_SESSION['tipo'] = "";
+  }
+
+  function cripto($senha) {
+    $c = '';
+    for ($pos=0; $pos < strlen($senha); $pos++) { 
+      $letra = ord($senha[$pos]) + 1;
+     $c .= chr($letra);
+    }
+    return $c;
+  }
+
   function gerarHash($senha) {
-    $hash = password_hash($senha, PASSWORD_DEFAULT);
+    $txt = cripto($senha);
+    $hash = password_hash($txt, PASSWORD_DEFAULT);
     return $hash;
   }
 
@@ -8,12 +27,4 @@
     $ok = password_verify($senha, $hash);
     return $ok;
   }
-
-  // echo gerarHash('diego');
-  if (testarHash('dieo', '$2y$10$kNmDx3b.nNONl3CbMlbAT.gF6xHXE6ZhKa6sX3fwofmNG4llfOKey')) {
-    echo "senha correta!";
-  } else {
-    echo "senha incorreta";
-  }
-
 ?>
