@@ -16,8 +16,19 @@
     require_once "includes/login.php";
   ?>
   <div id="corpo">
-
+    <?php 
+      if (!is_logado()) {
+        echo msg_erro("Efetue <a href='user-login.php'>login</a> para poder editar seus dados.");
+      } else {
+        if (!isset($_POST['usuario'])) {
+          include "user-edit-form.php";
+        } else {
+          echo msg_sucesso("Dados foram recebidos");
+        }
+      }
+    ?>
 </div>
 <?php require_once "rodape.php"; ?>
+
 </body>
 </html>
